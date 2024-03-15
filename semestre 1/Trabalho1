@@ -1,0 +1,41 @@
+#===================================
+#===========Exercicio 1=============
+#===================================
+nota1 = float(input('Digite a primeira nota: '))
+nota2 = float(input('Digite a segunda nota: '))
+nota3 = float(input('Digite a terceira nota: '))
+media = (nota1+nota2+nota3)/3
+print('a media final foi {:.2f}'.format(media))
+if media >= 7:
+    print('O aluno passou de ano!')
+else:
+    print('O aluno reprovou!')
+#===================================
+#===========Exercicio 2=============
+#===================================
+idade = int(input('Quantos anos você tem? '))
+meses = idade * 12
+dias = idade * 365
+print('voce tem {} anos, isso em meses é igual á {} e em dias é igual é {}'.format(idade, meses, dias))
+#===================================
+#===========Exercicio 3=============
+#===================================
+custofabrica = float(input('Digite o valor de produção do veiculo: R$'))
+porcdist = (custofabrica*28)/100
+impostos = (custofabrica*45)/100
+precof = custofabrica + porcdist + impostos
+print('o valor do veiculo para o consumidor é igual á : R$', precof)
+#===================================
+#===========Exercicio 4=============
+#===================================
+idade = int(input('Digite a idade do nadador: '))
+if idade >= 5 and idade <= 7:
+    print('o nadador pertence a categotia INFANTIL A')
+elif idade >= 8 and idade <= 10:
+    print('o nadador pertence a categotia INFANTIL B')
+elif idade >= 11 and idade <= 13:
+    print('o nadador pertence a categotia JUVENIL A')
+elif idade >= 14 and idade <= 17:
+    print('o nadador pertence a categotia JUVENIL B')
+elif idade > 18:
+    print('o nadador pertence a categotia ADULTO')
