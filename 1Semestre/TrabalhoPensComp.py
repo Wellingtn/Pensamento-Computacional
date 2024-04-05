@@ -32,28 +32,29 @@ Digite sua opção aqui: '''))
             dia_nasc = int(input('Informe o seu dia de nascimento: '))
             mes_nasc = int(input('Informe o seu mês de nascimento: '))
 
-            print('Digite o dia atual, logo após, o mes atual:')            
+            print('Digite o dia atual, logo após, o mes atual:')
             dia_atual = int(input('Informe o dia atual: '))
             mes_atual = int(input('Informe o mês atual: '))
 
-            if mes_nasc - mes_atual >= 0:
+            if mes_nasc - mes_atual >= 0:# se a diferença de meses for positiva, então o proximo aniversário é no mesmo ano
                 falta_meses = mes_nasc - mes_atual
             else:
-                result = mes_nasc - mes_atual
-                falta_meses = 12 + (result)
+                result = mes_nasc - mes_atual #a variavel result é criada só pra essa soma.
+                falta_meses = 12 + (result)# se o mes atual > mes nasc, então result é negativo.
             
-            if dia_nasc - dia_atual >= 0:
+            if dia_nasc - dia_atual >= 0:# se a diferença de dias for positiva, então o aniversario é no mesmo mês
                 falta_dias = dia_nasc - dia_atual
             else:
                 falta_dias = ((dia_atual - 30)*-1) + dia_nasc
                 falta_meses -= 1
+
             print(f'''seu aniversario = {dia_nasc}/{mes_nasc}
 data atual = {dia_atual}/{mes_atual}
 falta {falta_meses} meses e {falta_dias} dias para o seu aniversário''')
             if falta_dias == 0 and falta_dias == 0:
+
                 print('Parabéns, hoje é seu aniversário!!')
-        
-            break
+                print('='*47)
         case 2:
             print(f'''
 {'='*47}
@@ -61,7 +62,7 @@ falta {falta_meses} meses e {falta_dias} dias para o seu aniversário''')
 {'='*47}''')
             numero_cartao = int(input('Digite o numero de 4 digitos do cartão: '))
 
-            milhar = numero_cartao // 1000 % 10
+            milhar = numero_cartao // 1000 % 10 #irá dividir por mil, e depois obter o resto de outra divisão por 10
             centena = numero_cartao //100 % 10 
             dezena = numero_cartao //10 % 10
             unidade = numero_cartao //1 % 10
@@ -69,6 +70,7 @@ falta {falta_meses} meses e {falta_dias} dias para o seu aniversário''')
             result = (milhar * unidade)+(centena*dezena)
             verificador = result // 7
             print(f'o codigo verificador é {verificador}')
+            print('='*47)
         case 3:
             print(f'''
 {'='*47}
@@ -92,6 +94,7 @@ falta {falta_meses} meses e {falta_dias} dias para o seu aniversário''')
                 duracao_min = 60 - result
                 duracao_horas -= 1
             print(f'o evento irá durar {duracao_horas} horas e {duracao_min} minutos')
+            print('='*47)
         case 4:
             print(f'''
 {'='*47}
@@ -131,7 +134,7 @@ Digite sua opção aqui: '''))
                         else:
                             if  lado1 == lado2 == lado3:
                                 print('esse triangulo é equilatero!')
-                            elif lado1 == lado2 == lado3:
+                            elif lado1 == lado2 or lado2== lado3 or lado3 == lado1:
                                 print('esse triangulo é isóceles!')
                             elif lado1 != lado2 != lado3:
                                 print('esse triangulo é escaleno!')
@@ -141,6 +144,7 @@ Digite sua opção aqui: '''))
                         break
                     case _ :
                         print('opção invalida, tente novamente!')
+            print('='*47)
         case 5:
             break
         case _:
