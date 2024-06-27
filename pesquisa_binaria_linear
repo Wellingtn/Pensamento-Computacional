@@ -1,0 +1,104 @@
+from time import perf_counter
+def busca_binaria(item):
+    '''
+    Realiza uma busca binária, dividindo a lista ao meio e verificando se
+    o item esta a esquerda ou a direita até encontrar(ou não) o item desejado.
+    :param item: elemento para a funpção tentar encontrar na lista
+    '''
+    global lista
+    lista = sorted(lista)
+    inicio = perf_counter()  # Início da contagem de tempo
+    baixo = 0
+    alto = len(lista) - 1
+    green = '\033[1;32m'
+    reset = '\033[0m'
+    while baixo <= alto:
+        meio = (baixo + alto) // 2
+        chute = lista[meio]
+
+        if chute == item:
+            fim = perf_counter()  # Fim da contagem de tempo
+            print(f'''{green}O valor {item} foi encontrado na lista na {lista.index(chute) + 1}ª posição.
+>>>Tempo de busca na pesquisa binária: {(fim - inicio) * 1000:.6f} milissegundos{reset}''')
+            return meio
+        if chute > item:
+            alto = meio - 1
+        else:
+            baixo = meio + 1
+
+    fim = perf_counter()  # Fim da contagem de tempo
+    print(f'''{green}O valor {item} foi encontrado na lista na {lista.index(chute) + 1}ª posição.
+>>>Tempo de busca na pesquisa binária: {(fim - inicio) * 1000:.6f} milissegundos{reset}''')
+
+
+def busca_linear(item):
+    '''
+    Realista busca elemento por elemento na lista até encontrar o item desejado,
+    depois de encontrar a função printa uma mensagem de sucesso ou fracasso junto ao
+    tempo que levou para achar o resultado
+    '''
+    global lista
+    from time import perf_counter
+    red = '\033[31m'
+    reset = '\033[0m'
+
+    inicio = perf_counter()
+    for i in range(len(lista)):
+        if lista[i] == item:
+            fim = perf_counter()
+            duracao = fim - inicio
+            print(f'''{red}O valor {item} foi encontrado na lista na {i+1}ª posição.
+>>>Tempo de busca na pesquisa linear: {(fim - inicio) * 1000:.6f} milissegundos{reset}''')
+            break
+        else:
+            pass
+    fim = perf_counter()
+    duracao = fim - inicio
+    if item not in lista:
+        print(f'''{red}O valor {item} não foi encontrado na lista.
+>>>Tempo de busca na pesquisa binaria: {(fim - inicio) * 1000:.6f} milissegundos{reset}''')
+
+
+def preencher_lista():
+    '''
+    pede a quantidade de itens inseridos na lista, usando a biblioteca random para colocar
+    numeros aleatorios á lista.
+    '''
+    from random import randint
+    global lista
+    tam = int(input('Digite a quantidade de itens para ser inserido na lista: '))
+    for i in range(tam):
+        lista.append(randint(0, 1000))
+    print('Lista gerada e ordenada com sucesso!')
+    print(lista)
+
+
+def busca():
+    '''
+    obtem o item que o usuario deseja encontrar e depois, ultiza as funções de
+    busca linear e busca binária para encontra o elemento na lista, depois pergunta se o usuario
+    deseja continuar.
+    '''
+    while True:
+        item_para_buscar= int(input('Digite o valor a ser buscado: '))
+
+        busca_binaria(item_para_buscar)
+        busca_linear(item_para_buscar)
+
+        opcmenu = int(input('''Deseja continuar?
+[ 1 ] Continuar
+[ 2 ] Sair do programa
+Sua opção: '''))
+        while opcmenu != 1 and opcmenu != 2:
+            opcmenu = int(input('''Deseja continuar?
+[ 1 ] Continuar
+[ 2 ] Sair do programa
+Sua opção: '''))
+        if opcmenu == 2:
+            break
+
+
+# Programa Principal
+lista = []
+preencher_lista()
+busca()
