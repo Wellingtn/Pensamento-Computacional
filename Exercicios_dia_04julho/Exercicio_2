@@ -1,0 +1,33 @@
+def obter_numeros_paridade(n, c):
+    if c == 'p':
+        for cont in range(0, n):
+            if cont % 2 == 0:
+                if cont != n-2:
+                    print(cont,end =', ')
+                else:
+                    print(cont,'.')
+    else:
+        for cont in range(0, n):
+            if cont % 2 == 1:
+                if cont != n-1:
+                    print(cont,end=', ')
+                else:
+                    print(cont,'.')
+
+
+def main():
+    n = int(input('Digite um valor para ser o limite do intervalo: '))
+    opc = 0
+    while opc != 1 or opc != 2:
+        opc = int(input('''escolha quais numeros devem aparecer do intervalo:
+        [ 1 ] Só os números pares
+        [ 2 ] Só os números impares
+        Sua opção: '''))
+        if opc == 1:
+            obter_numeros_paridade(n, 'p')
+        elif opc == 2:
+            obter_numeros_paridade(n, 'i')
+        else:
+            print('Erro: opção invalida.')
+
+main()
