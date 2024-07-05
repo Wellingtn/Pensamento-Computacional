@@ -1,0 +1,12 @@
+def filtrar(texto, denylist):
+    for palavra in denylist:
+        texto = texto.replace(palavra, '*')
+
+    print(texto)
+
+def main():
+    p_probidas = ['vento', 'ferias', 'sol', 'praia', 'casa']
+    texto = input('Digite o texto para ser filtrado: ').lower()
+    filtrar(texto, p_probidas)
+
+main()
