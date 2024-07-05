@@ -1,0 +1,35 @@
+def filtra_numeros(list):
+    lista_regra = []
+    for elemento in list:
+        prim_parte = elemento[0:2]
+        seg_parte = elemento[2:4]
+        soma = int(prim_parte) + int(seg_parte)
+        if soma**2 == int(elemento):
+            lista_regra.append(elemento)
+    if not lista_regra:
+        return 'Não foi encontrado nenhum numero que satisfaça a regra.'
+    else:
+        return lista_regra
+
+
+
+def main():
+    lista = []
+    while True:
+        num = str(input('Digite um valor para checagem: '))
+        while int(num) <= 999 or int(num) >= 10000:
+            print('Erro: Numero invalido, tente novamente.')
+            num = str(input('Digite um valor para checagem: '))
+        lista.append(num)
+        opc = int(input('''Deseja continuar? 
+[ 1 ] Sim
+[ 2 ] Não
+Sua opção: '''))
+        if opc == 2:
+            break
+        elif opc != 1 and opc != 2:
+            print('Erro:opção invalida.')
+
+    lista_regra = filtra_numeros(lista)
+    print(lista_regra)
+main()
