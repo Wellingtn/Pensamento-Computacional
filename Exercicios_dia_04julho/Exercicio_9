@@ -1,0 +1,30 @@
+def imprime_gradual(text):
+    metade = len(text)//2
+    vet = [text[metade]]
+    for c in range(metade+1):
+        if c == 0:
+            print(vet[0])
+        else:
+            vet.append(text[metade+c])
+            vet.insert(0, text[metade-c])
+            palavra = transforma_em_str(vet)
+            print(palavra)
+
+
+def transforma_em_str(vet):
+    palavra = ''
+    for itens in vet:
+        palavra += itens
+
+    return palavra
+
+
+def main():
+    palavra = input('Digite uma palavra: ')
+    while len(palavra) % 2 == 0:
+        print('ERRO: a palavra digitada deve ser impar.')
+        palavra = input('Digite uma palavra: ')
+
+    imprime_gradual(palavra)
+
+main()
