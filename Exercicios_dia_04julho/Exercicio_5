@@ -1,0 +1,12 @@
+def troca_elementos(vet):
+    for c in range(0, (len(vet)//2)):
+          vet[c], vet[-c-1] = vet[-c-1], vet[c]
+    return vet
+
+def main():
+        lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        print(lista)
+        trocada = troca_elementos(lista)
+        print(lista)
+
+main()
